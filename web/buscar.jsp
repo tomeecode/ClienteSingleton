@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,14 +31,16 @@
         <div class="row">
             <div class="col s4"></div>
             <div class="col s4">
-                <form action="girar.do" method="POST">
+                <form action="consultar.do" method="POST">
                     <input type="text" name="numero" placeholder="Numero"/>
-                    <input type="password" name="clave" placeholder="Numero"/>
-                    <input type="text" name="monto" placeholder="Numero"/>
-                    <input type="submit" name="bt" value="Girar" class="btn blue accent-3"/>
+                    <input type="submit" name="bt" value="Buscar" class="btn blue accent-3"/>
                 </form>
-                <br>
-                ${requestScope.msg}
+                <br><br>
+                ${requestScope.error}
+                <c:if test="${not empty requestScope.cta}">
+                    Numero Cta: ${requestScope.cta.codigo}<br><br>
+                    Saldo: ${requestScope.cta.saldo}
+                </c:if>
             </div>
         </div>
 

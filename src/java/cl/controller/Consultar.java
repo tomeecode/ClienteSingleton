@@ -6,6 +6,7 @@
 package cl.controller;
 
 import cl.beans.IBanco;
+import cl.model.Cuenta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -19,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author roman
  */
-@WebServlet(name = "Girar", urlPatterns = {"/girar.do"})
-public class Girar extends HttpServlet {
+@WebServlet(name = "Consultar", urlPatterns = {"/consultar.do"})
+public class Consultar extends HttpServlet {
 
     @EJB(lookup = "mibanco")
     private IBanco bank;
@@ -29,15 +30,14 @@ public class Girar extends HttpServlet {
         
         try{
             int numero = Integer.parseInt(request.getParameter("numero"));
-            int clave = Integer.parseInt(request.getParameter("clave"));
-            int monto = Integer.parseInt(request.getParameter("monto"));
+            
             //LLAMADA AL EJB
-            String msg = bank.girar(numero, monto, clave);
-            request.setAttribute("msg", msg);
+            Cuenta cta = bank.buscar(numero);
+            request.setAttribute("cta", cta);
         }catch(NumberFormatException e){
-            request.setAttribute("msg", "ingrese datos numericos");
+            request.setAttribute("error", "ingrese datos numericos");
         }
-        request.getRequestDispatcher("girar.jsp").forward(request, response);
+        request.getRequestDispatcher("buscar.jsp").forward(request, response);
         
     }
 
