@@ -17,7 +17,7 @@
             <div class="col s12">
                 <nav>
                     <div class="nav-wrapper blue accent-4">
-                        <a href="#" class="brand-logo">Test Singleton</a>
+                        <a href="#" class="brand-logo">Test Singleton esta es una prueba con tomee user</a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="girar.jsp">Girar</a></li>
                             <li><a href="buscar.jsp">Buscar</a></li>
